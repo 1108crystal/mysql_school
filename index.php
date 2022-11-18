@@ -9,7 +9,7 @@
                      `students`.`graduate_at` as '畢業國中'
               FROM `class_student`,`students` 
               WHERE `class_student`.`school_num`=`students`.`school_num` && 
-                    `class_student`.`class_code`='{$_GET['code']}'";
+                    `class_student`.`class_code`='{$_GET['code']}' ";
     }else{
         //建立撈取學生資料的語法，限制只撈取前20筆
         $sql_students="SELECT `students`.`id` as 'id' ,
@@ -17,9 +17,15 @@
                      `students`.`name` as '姓名',
                      `students`.`birthday` as '生日',
                      `students`.`graduate_at` as '畢業國中'
-              FROM `students` LIMIT 20";
+              FROM `students` ";
     }
-    
+
+    $div=10;
+    $total=$pdo->query($sql_students)->fetchColumn();
+    $pages=ceil($total/$div);
+    $now=(isset($_GET['page']))?$_GET['page']:1;
+    $start=($now-1)*$div;
+    $sql=$sql . "LIMIT $start,$div";
 ?>    
 <!DOCTYPE html>
 <html lang="en">
@@ -54,7 +60,12 @@
         $classes = $pdo->query($sql)->fetchAll(PDO::FETCH_ASSOC);
         foreach ($classes as $row) {
             echo "<li><a href='?code={$row['code']}'>{$row['name']}</a></il>";
-
+           
+            if($_GET['code']=$row['code']){
+                $classesName=$row['name'];
+            }else{
+                $classesName='';
+            }
         }
         ?>
     </ul>
@@ -74,7 +85,14 @@
     // echo "</pre>";
     ?>
     <table class="list-students">
+
         <?php
+        echo "<tr>";
+
+        echo "<td colspan=8 >{$classesName}</td>";
+
+        echo "</tr>";
+
         echo "<tr>";
         echo "<td>學號</td>";
         echo "<td>姓名</td>";

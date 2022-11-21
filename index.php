@@ -1,8 +1,8 @@
 <?php
-    $dsn = "mysql:host=localhost;charset=utf8;dbname=school";
-    $pdo = new PDO($dsn, 'root', '');
-    if(isset($_GET['code'])){
-        $sql_students="SELECT `students`.`id` as 'id' ,
+$dsn = "mysql:host=localhost;charset=utf8;dbname=school";
+$pdo = new PDO($dsn, 'root', '');
+if (isset($_GET['code'])) {
+    $sql_students = "SELECT `students`.`id` as 'id' ,
                     `students`.`school_num` as '學號',
                      `students`.`name` as '姓名',
                      `students`.`birthday` as '生日',
@@ -10,23 +10,49 @@
               FROM `class_student`,`students` 
               WHERE `class_student`.`school_num`=`students`.`school_num` && 
                     `class_student`.`class_code`='{$_GET['code']}' ";
-    }else{
-        //建立撈取學生資料的語法，限制只撈取前20筆
-        $sql_students="SELECT `students`.`id` as 'id' ,
+
+
+          $sql_total="SELECT count(`students`.`id`)
+          FROM `class_student`,`students` 
+          WHERE `class_student`.`school_num`=`students`.`school_num` && 
+                `class_student`.`class_code`='{$_GET['code']}'";
+            //從`classes`資料表中撈出所有的班級資料並在網頁上製作成下拉選單的項目
+            $sql = "SELECT `id`,`code`,`name` FROM `classes` where `code`='{$_GET['code']}'";
+            $classes = $pdo->query($sql)->fetchAll(PDO::FETCH_ASSOC);
+
+            foreach ($classes as $row) {   
+
+                if ($_GET['code'] = $row['code']) {
+                    $classesName = $row['name'];
+                } else {
+                    $classesName = '';
+                }
+            }
+
+             
+            
+      
+
+} else {
+    //建立撈取學生資料的語法，限制只撈取前20筆
+    $sql_students = "SELECT `students`.`id` as 'id' ,
                      `students`.`school_num` as '學號',
                      `students`.`name` as '姓名',
                      `students`.`birthday` as '生日',
                      `students`.`graduate_at` as '畢業國中'
               FROM `students` ";
-    }
+}
 
-    $div=10;
-    $total=$pdo->query($sql_students)->fetchColumn();
-    $pages=ceil($total/$div);
-    $now=(isset($_GET['page']))?$_GET['page']:1;
-    $start=($now-1)*$div;
-    $sql=$sql . "LIMIT $start,$div";
-?>    
+$div = 10;
+$total = $pdo->query($sql_total)->fetchColumn();
+$pages = ceil($total / $div);
+$now = (isset($_GET['page'])) ? $_GET['page'] : 1;
+$start = ($now - 1) * $div;
+$sql_students = $sql_students . "LIMIT $start,$div";
+
+
+
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -53,22 +79,22 @@
 
     </nav>
     <nav>
-    <ul class="class-list">
-        <?php
-        //從`classes`資料表中撈出所有的班級資料並在網頁上製作成下拉選單的項目
-        $sql = "SELECT `id`,`code`,`name` FROM `classes`";
-        $classes = $pdo->query($sql)->fetchAll(PDO::FETCH_ASSOC);
-        foreach ($classes as $row) {
-            echo "<li><a href='?code={$row['code']}'>{$row['name']}</a></il>";
-           
-            if($_GET['code']=$row['code']){
-                $classesName=$row['name'];
-            }else{
-                $classesName='';
+        <ul class="class-list">
+            <?php
+            //從`classes`資料表中撈出所有的班級資料並在網頁上製作成下拉選單的項目
+            $sql = "SELECT `id`,`code`,`name` FROM `classes`";
+            $classes = $pdo->query($sql)->fetchAll(PDO::FETCH_ASSOC);
+            foreach ($classes as $row) {
+                echo "<li><a href='?code={$row['code']}'>{$row['name']}</a></il>";
+
+                // if ($_GET['code'] = $row['code']) {
+                //     $classesName = $row['name'];
+                // } else {
+                //     $classesName = '';
+                // }
             }
-        }
-        ?>
-    </ul>
+            ?>
+        </ul>
     </nav>
     <?php
     // $dsn = "mysql:host=localhost;charset=utf8;dbname=school";
@@ -84,6 +110,63 @@
     // print_r($rows);
     // echo "</pre>";
     ?>
+
+    <div class="pages">
+        <?php
+        //上一頁
+        //當前頁碼-1,可是不能小於0,最小是1,如果是0,不顯示
+        if (($now - 1) >= 1) {
+            $prev = $now - 1;
+            if (isset($_GET['code'])) {
+                echo "<a href='?page=$prev&code={$_GET['code']}'> ";
+                echo "&lt; ";
+                echo " </a>";
+            } else {
+
+                echo "<a href='?page=$prev'> ";
+                echo "&lt; ";
+                echo " </a>";
+            }
+        }
+
+        ?>
+        <?php
+        //頁碼區
+        for ($i = 1; $i <= $pages; $i++) {
+            if (isset($_GET['code'])) {
+                echo "<a href='?page=$i&code={$_GET['code']}'> ";
+                echo $i;
+                echo " </a>";
+            } else {
+
+                echo "<a href='?page=$i'> ";
+                echo $i;
+                echo " </a>";
+            }
+        }
+        ?>
+        <?php
+        //下一頁
+        //當前頁碼+1,可是不能超過總頁數,最大是總頁數,如果超過總頁數,不顯示
+        if (($now + 1) <= $pages) {
+            $next = $now + 1;
+            if (isset($_GET['code'])) {
+                echo "<a href='?page=$next&code={$_GET['code']}'> ";
+                //echo "< ";
+                echo "&gt; ";
+                echo " </a>";
+            } else {
+                echo "<a href='?page=$next'> ";
+                //echo " >";
+                echo "&gt; ";
+                echo " </a>";
+            }
+        }
+
+        ?>
+    </div>
+
+
     <table class="list-students">
 
         <?php

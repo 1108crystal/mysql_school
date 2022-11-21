@@ -91,6 +91,47 @@ a.nowclass{
     font-size: 20px;
     font-weight: bold;
 }
+.pages a.noshow{
+    border:0px solid #eee;
+    box-shadow: initial;
+}
+.del-msg{
+    width: 80%;
+    text-align: center;
+    font-size: 2rem;
+    background: pink;
+    margin: 1rem auto;
+    border-radius: 0.5rem;
+    padding: 0.5rem;
+    animation-name:fade;
+    animation-duration:5s ;
+    opacity: 0;
+    height:0;
+}
+@keyframes fade{
+    0%{
+        height:0rem;
+    }
+    10%{
+        height:3.5rem;
+        opacity:0;
+    }
+    20%{
+        opacity: 1;
+    }
+    70%{
+        height:3.5rem;
+        opacity:1
+    }
+    80%{
+        height:3.5rem;
+        opacity: 0;
+    }
+    100%{
+        height:0;
+    }
+    
+}
 th {
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
     font-size: 28px;
@@ -99,5 +140,6 @@ th {
     border: #A498BD solid;
     height: 0px;
     color: #4D2078;
-    border-width: 0px 0px 1px padding-bottom: 5px
+    border-width: 0px 0px 1px ;
+    padding-bottom: 5px;
 }

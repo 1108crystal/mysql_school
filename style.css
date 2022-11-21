@@ -1,75 +1,103 @@
-*{
+* {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
 
-.list-students{
+.list-students {
     border-collapse: collapse;
-    margin:auto;
+    width: 800px;
+    margin: auto;
 }
-.list-students td{
-    border:1px solid #aaa;
-    padding:5px 10px;
+
+.list-students td {
+    border: 1px solid #aaa;
+    padding: 5px 10px;
     text-align: center;
 }
-.list-students td:nth-last-child(1){
-    text-align: right;
-}
-nav,.pages{
+
+.list-students :nth-last-child(1) {
     text-align: center;
 }
-.pages{
-    font-size:20px;
+
+nav,
+.pages {
+    text-align: center;
+}
+
+.pages {
+    font-size: 20px;
     font-weight: bolder;
-    margin:1rem;
+    margin: 1rem;
 }
-.pages a{
+
+.pages a {
     display: inline-flex;
     justify-content: center;
     align-items: center;
     text-decoration: none;
-    border:1px solid #eee;
+    border: 1px solid #eee;
     box-shadow: 1px 1px 5px #ccc;
     text-align: center;
-    width:32px;
-    height:32px;
+    width: 32px;
+    height: 32px;
     border-radius: 8px;
 
 }
-nav a{
-    display:inline-block;
-    padding:5px 10px;
+
+nav a {
+    display: inline-block;
+    padding: 5px 10px;
     text-decoration: none;
 }
-nav a:hover{
-    display:inline-block;
-    padding:5px 10px;
+
+nav a:hover {
+    display: inline-block;
+    padding: 5px 10px;
     text-decoration: underline;
 }
 
-.class-list{
-   display: flex; 
-   list-style-type: none;
-   justify-content: center;
-   align-items: center;
-   margin:5px 0;
+.class-list {
+    display: flex;
+    list-style-type: none;
+    justify-content: center;
+    align-items: center;
+    margin: 5px 0;
 }
-nav ul.class-list li a{
-    padding:5px 12px;
-    margin:0 2px;
-    border-radius:5px;
+
+nav ul.class-list li a {
+    padding: 5px 12px;
+    margin: 0 2px;
+    border-radius: 5px;
     background-color: lightskyblue;
     box-shadow: 2px 2px 3px skyblue;
     text-decoration: none;
 }
- .class-list li a:hover{
+
+.class-list li a:hover {
     background-color: blue;
-    color:white;
+    color: white;
     font-weight: bolder;
     text-decoration: underline;
 }
-.now{
+
+.now {
     background-color: green;
-    color:white;
+    color: white;
+}
+a.nowclass{
+    
+    color:#4D2078;
+    font-size: 20px;
+    font-weight: bold;
+}
+th {
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-size: 28px;
+    font-weight: bold;
+    text-align: center;
+    border: #A498BD solid;
+    height: 0px;
+    color: #4D2078;
+    border-width: 0px 0px 1px padding-bottom: 5px
 }

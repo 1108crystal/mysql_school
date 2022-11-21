@@ -1,7 +1,6 @@
 <?php
 $dsn = "mysql:host=localhost;charset=utf8;dbname=school";
 $pdo = new PDO($dsn, 'root', '');
-
 if (isset($_GET['code'])) {
     $sql_students = "SELECT `students`.`id` as 'id' ,
                     `students`.`school_num` as '學號',
@@ -20,11 +19,13 @@ if (isset($_GET['code'])) {
     //從`classes`資料表中撈出所有的班級資料並在網頁上製作成下拉選單的項目
     $sql = "SELECT `id`,`code`,`name` FROM `classes` where `code`='{$_GET['code']}'";
     $classes = $pdo->query($sql)->fetchAll(PDO::FETCH_ASSOC);
-    $classesName = '';
+
     foreach ($classes as $row) {
 
         if ($_GET['code'] = $row['code']) {
             $classesName = $row['name'];
+        } else {
+            $classesName = '';
         }
     }
 } else {
@@ -82,6 +83,7 @@ $sql_students = $sql_students . "LIMIT $start,$div";
     <h1>學生成績管理系統</h1>
     <hr>
     <nav>
+        <a href="add.php">新增學生</a>
         <a href="reg.php">教師註冊</a>
         <a href="login.php">教師登入</a>
 
@@ -236,7 +238,7 @@ $sql_students = $sql_students . "LIMIT $start,$div";
         <?php
         echo "<tr>";
 
-        echo "<th colspan=5 >{$classesName}</th>";
+        echo "<th colspan=8 >{$classesName}</th>";
 
         echo "</tr>";
 
@@ -246,7 +248,9 @@ $sql_students = $sql_students . "LIMIT $start,$div";
         echo "<td>生日</td>";
         echo "<td>學校代號</td>";
         echo "<td>年齡</td>";
-
+        echo "<td colspan=3 >操作</td>";
+        // echo "<td></td>";
+        // echo "<td</td>";
         echo "</tr>";
         foreach ($rows as $row) {
             echo "<tr >";
@@ -255,7 +259,10 @@ $sql_students = $sql_students . "LIMIT $start,$div";
             echo "<td>{$row['生日']}</td>";
             echo "<td>{$row['畢業國中']}</td>";
             echo "<td>" . (date('Y') - date('Y', strtotime($row['生日']))) . "</td>";
-
+            echo "<td><a href='edit.php?id={$row['id']}'><i class='bi bi-pencil-fill'></i>編輯 </a></td>";
+            echo "<td><a href='./confim_del.php?id={$row['id']}'><i class='bi bi-trash'></i>刪除 </a></td>";
+            // echo "<td><a href='del.php?id={$row['id']}'><i class='bi bi-trash'></i>刪除 </a></td>";
+            echo "<td><a href=''> </a></td>";
             echo "</tr>";
         }
 

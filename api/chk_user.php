@@ -1,8 +1,7 @@
 <?php
-session_start();
-$dsn = "mysql:host=localhost;charset=utf8;dbname=school";
-$pdo = new PDO($dsn, 'root', '');
+include "../db/base.php";
 
+session_start();
 $acc = $_POST['acc'];
 $pw = $_POST['pw'];
 
@@ -24,5 +23,5 @@ if ($chk == 1) {
 
         $_SESSION['login_try']=1;
     }
-    header("location:../login.php?error=login");
+    header("location:../fron/login.php?error=login");
 }

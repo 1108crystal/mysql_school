@@ -4,6 +4,17 @@
     box-sizing: border-box;
 }
 
+header{
+    padding:1rem;
+    box-shadow: 0 0 10px #ccc;
+    margin-bottom: 1.5rem;
+}
+header .nav{
+    width:800px;
+    margin:auto;
+
+}
+
 .list-students {
     border-collapse: collapse;
     width: 800px;
@@ -155,4 +166,12 @@ th {
     color: #4D2078;
     border-width: 0px 0px 1px ;
     padding-bottom: 5px;
+}
+
+.class_form{
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-size: 28px;
+    font-weight: bold;
+    text-align: center;
+    margin: 80px auto;
 }

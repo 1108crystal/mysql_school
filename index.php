@@ -24,16 +24,18 @@
 <body>
     <!-- 抬頭表題 -->
     <?php include "./layouts/header.php" ?>
-    <h4 style='text-align:center'>學生成績管理系統</h4>
-    <hr>
+
+
 
     <?php
 
     $do = $_GET['do'] ?? 'main';
-    $file="./front/".$do.".php";
-    if(file_exists($file)){
-            include $file;
-    }else{
+    $file = "./front/" . $do . ".php";
+    if (file_exists($file)) {
+
+        include $file;
+    } else {
+
         include "./front/main.php";
     }
     ?>

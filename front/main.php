@@ -1,5 +1,7 @@
-<?php
+<h4 style='text-align:center'>學生成績管理系統</h4>
 
+<?php include "./layouts/class_nav.php" ?>  
+<?php
 $classesName = '';
 if (isset($_GET['code'])) {
     $sql_students = "SELECT `students`.`id` as 'id' ,

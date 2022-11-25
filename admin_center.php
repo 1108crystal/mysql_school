@@ -9,6 +9,7 @@ include "./db/base.php";
 
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -30,20 +31,26 @@ include "./db/base.php";
     ?>
     <!-- 抬頭表題 -->
     <?php include "./layouts/header.php" ?>
-    <h4 style='text-align:center'>後台管理中心-學生成績管理系統</h4>
+    <h4 style='text-align:center'>後台管理中心</h4>
 
     <hr>
+    <div class="main">
+    <article style="width:40%;">
 
-    <?php
-    $do=$_GET['do']??'main';
-    $file='./back/'.$do.".php";
+    </article>
+    <section>
+        <?php
+        $do = $_GET['do'] ?? 'main';
+        $file = './back/' . $do . ".php";
 
-    if(file_exists($file)){
-        include $file;
-    }else{
-        include "./back/main.php";
-    }
-    ?>
+        if (file_exists($file)) {
+            include $file;
+        } else {
+            include "./back/main.php";
+        }
+        ?>
+    </section>
+    </div>
 
 </body>
 

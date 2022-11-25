@@ -1,3 +1,4 @@
+<?php include "./layouts/class_nav.php" ?>  
 <?php
 
 $classesName = '';

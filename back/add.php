@@ -1,22 +1,8 @@
-<?php
-include "./db/base.php";
-?>
-
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>新增學生</title>
-</head>
-
-<body>
+<div>
     <h1>新增學生</h1>
 
     <form action="./api/add_student.php" method="post">
-        <table>
+        <table >
 
             <tr>
                 <td>school_num</td>
@@ -26,7 +12,7 @@ include "./db/base.php";
 
 
                 ?>
-                <td><input type="text" name="school_num"  value="<?=$max+1?>" readonly ></td>
+                <td><input type="text" name="school_num" value="<?= $max + 1 ?>" readonly></td>
             </tr>
             <tr>
                 <td>姓名</td>
@@ -34,23 +20,23 @@ include "./db/base.php";
             </tr>
             <tr>
                 <td>生日</td>
-                <td><input type="date" name="birthday" ></td>
+                <td><input type="date" name="birthday"></td>
             </tr>
             <tr>
                 <td>uni_id</td>
-                <td><input type="text" name="uni_id" ></td>
+                <td><input type="text" name="uni_id"></td>
             </tr>
             <tr>
                 <td>地址</td>
-                <td><input type="text" name="addr" ></td>
+                <td><input type="text" name="addr"></td>
             </tr>
             <tr>
                 <td>parents</td>
-                <td><input type="text" name="parents" ></td>
+                <td><input type="text" name="parents"></td>
             </tr>
             <tr>
                 <td>tel</td>
-                <td><input type="text" name="tel" ></td>
+                <td><input type="text" name="tel"></td>
             </tr>
             <tr>
                 <td>dept</td>
@@ -121,6 +107,4 @@ include "./db/base.php";
             </tr>
         </table>
     </form>
-</body>
-
-</html>
+</div>

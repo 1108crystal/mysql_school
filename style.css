@@ -175,3 +175,8 @@ th {
     text-align: center;
     margin: 80px auto;
 }
+
+.main{
+    display: flex;
+}
+

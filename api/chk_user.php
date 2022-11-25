@@ -14,8 +14,8 @@ if ($chk == 1) {
     $user=$pdo->query($sql)->fetch();
 
     $_SESSION['login'] = $user;
+    header("location:../admin_center.php");
 
-    
 } else {
     // 查無此使用者
     if(isset($_SESSION['login_try'])){

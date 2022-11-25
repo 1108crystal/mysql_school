@@ -1,4 +1,10 @@
 <?php
+session_start();
+if (!isset($_SESSION['login'])) {
+    header("location:index.php");
+    exit();
+}
+$classesName = '';
 $dsn = "mysql:host=localhost;charset=utf8;dbname=school";
 $pdo = new PDO($dsn, 'root', '');
 if (isset($_GET['code'])) {
@@ -58,7 +64,7 @@ $sql_students = $sql_students . "LIMIT $start,$div";
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>學生成績管理系統</title>
+    <title>後台管理中心</title>
     <!-- 載入css -->
     <!-- <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js"></script>
@@ -80,12 +86,11 @@ $sql_students = $sql_students . "LIMIT $start,$div";
     }
     ?>
 
-    <h1>學生成績管理系統</h1>
+    <h1>後台管理中心-學生成績管理系統</h1>
     <hr>
     <nav>
         <a href="add.php">新增學生</a>
-        <a href="reg.php">教師註冊</a>
-        <a href="login.php">教師登入</a>
+        <a href="logout.php">教師登出</a>
 
     </nav>
     <nav>

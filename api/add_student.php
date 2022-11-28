@@ -1,6 +1,7 @@
 <?php
+//使用PDO方式建立資料庫連線物件
+include "../db/base.php";
 
-include "./db/base.php";
 //建立變數接收表單傳送過來的資料
 $school_num=$_POST['school_num'];
 $name=$_POST['name'];
@@ -22,11 +23,9 @@ $year=2000;
 //透過SQL語法從class_student資料表中找出某班級的最大座號並加1做為新增的學生的座號
 $max_num=$pdo->query("SELECT max(`seat_num`) from `class_student` WHERE `class_code`='$class_code'")->fetchColumn();
 $seat_num=$max_num+1;
-
 //$seat_num=$pdo->query("SELECT max(`seat_num`) from `class_student` WHERE `class_code`='$class_code'")->fetchColumn()+1;
 
 //建立新增學生資料到students資料表的語法並帶入相關的變數
-
 $sql="INSERT INTO `students` 
 (`id`, `school_num`, `name`, 
  `birthday`, `uni_id`, `addr`, 
@@ -53,8 +52,6 @@ if($res1 && $res2){
 }else{
     $status='add_fail';
 }
-
-header("location:../index.php?status=$status");
-
+header("location:../admin_center.php?status=$status");
 
 ?>

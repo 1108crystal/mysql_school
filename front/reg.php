@@ -1,18 +1,25 @@
-<h4 style='text-align:center'>後台管理中心-教師註冊</h4>
-<hr>
-
-<div class="class_form">
-
+<div class="col-md-4 mx-auto my-5 p-5 border shadow-sm">
+    <h3 class="text-center">教師註冊</h3>
     <form action="./api/reg_user.php" method="post">
-        <div><label for="">帳號:<input type="text" name="acc" id="acc"></label></div>
-        <div><label for="">密碼:<input type="passs" name="pw" id="pw"></label></div>
-        <div><label for="">信箱:<input type="text" name="email" id="email"></label></div>
-        <div><label for="">姓名:<input type="text" name="name" id="name"></label></div>
-        <div>
-
-            <label for=""><input type="submit" name="註冊" id=""></label>
-            <label for=""><input type="reset" value="重置"></label>
+        <div class="form-group">
+            <label>帳號</label>
+            <input class="form-control" type="text" name="acc">
+        </div>
+        <div class="form-group">
+            <label>密碼</label>
+            <input class="form-control" type="password" name="pw">
+        </div>
+        <div class="form-group">
+            <label>信箱</label>
+            <input class="form-control" type="text" name="email">
+        </div class="form-group">
+        <div class="form-group">
+            <label>姓名</label>
+            <input class="form-control" type="text" name="name">
+        </div>
+        <div class="text-center">
+            <input class="btn btn-primary mx-2" type="submit" value="註冊">
+            <input class="btn btn-warning mx-2" type="reset" value="重置">
         </div>
     </form>
-
 </div>

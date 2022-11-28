@@ -1,5 +1,5 @@
 <?php
-include "./db/base.php";
+include "../db/base.php";
 
 //echo $_GET['id'];
 $student=$pdo->query("SELECT * FROM `students` where `id`='{$_GET['id']}'")
@@ -19,5 +19,6 @@ echo "<br>";
 echo $res_student;
 echo "刪除成功:";
 
-header("location:../index.php?del=已成功刪除學生{$student['name']}的所有資料！！");
+//因為刪除的功能被移到後台，所以刪除成功後將使用者導回後台頁面
+header("location:../admin_center.php?del=已成功刪除學生{$student['name']}的所有資料！！");
 ?>

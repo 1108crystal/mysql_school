@@ -33,11 +33,12 @@ $news = $pdo->query("select * from `news` where `id`='{$_GET['id']}' ")->fetch()
     </div>
     <div class="form-group row">
         <label class="col-form-label col-md-2 text-right">類別</label>
-        <input type="text" class="form-control col-md-10" name="type" value="<?= $news['type'] ?>">
+        <input type="text" class="form-control col-md-10" name="type" value="<?=$news['type']?>">
     </div>
 
 
-    <div class="text-right text-secondary">現在時間:<?= date("Y-m-d H:i:s"); ?></div>
+    <div class="text-right text-secondary">發佈時間:<?=$news['created_at']?></div>
+    <br><br>
     <div class="text-center">
         <input class="btn btn-primary mx-2" type="submit" value="確定修改">
         <input class="btn btn-warning mx-2" type="reset" value="重置">

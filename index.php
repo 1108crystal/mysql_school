@@ -19,7 +19,7 @@ include "./db/base.php";
 ?>
 
 <main class='container'>
-    <h1 style='text-align:center'>學生管理系統</h1>
+    <!-- <h1 style='text-align:center'>學生管理系統</h1> -->
 <?php
 
 $do=$_GET['do']??'main';

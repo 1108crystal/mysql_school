@@ -8,10 +8,10 @@
         foreach ($rows as $row) {
             echo "<li class='list-group-item list-gropu-item-action d-flex'>";
             echo "<div class='col-md-2'>";
-            // echo $row['type'];
+            echo $row['type'];
             echo "</div>";
             echo "<div class='col-md-8'>";
-            echo $row['subject'];
+            echo "<a href='index.php?do=news_detail&id={$row['id']}'>{$row['subject']}</a>";
             echo "</div>";
             echo "<div class='col-md-2 text-center'>";
             echo "<a class='btn btn-info mx-2' href='index.php?do=news_detail&id={$row['id']}'>...</a>";

@@ -3,17 +3,21 @@ include_once "../db/base.php";
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $v_TableName = TRIM($_POST['TableName']);
     $v_dbFUN = TRIM($_POST['dbFUN']);
-    $v_valueArray = $$_POST['valueArray'];
-    $v_where = $$_POST['where'];
+    $v_valueArray = $_POST['valueArray'];
+    // $v_valueArray = ['dept' => '3', 'graduate_at' => '23'];
+
+    $v = $_POST['where'];
+    $v_where = $$v;
 
     // echo $v_TableName;
     // echo "<br>";
     // echo $v_dbFUN;
     // echo "<br>";
-    echo $v_valueArray;
-    echo "<br>";
-    echo $v_where;
-    echo "<br>";
+    // print_r($v_valueArray);
+    // echo "<br>";
+    
+    print_r($v_where);
+    // echo "<br>";
     Fun_DB($v_TableName, $v_dbFUN, $v_valueArray, $v_where);
     
 }
@@ -321,15 +325,15 @@ function del($table, ...$args)
                         <div>輸入的範例:</div>
                         <div>
                             <ul>
-                                <li> insert:<BR>array('school_num' => '915084','name' => '郭小森','birthday' => '1975-08-25','uni_id' => 'F500000001',
+                                <li> insert:<BR>'school_num' => '915084','name' => '郭小森','birthday' => '1975-08-25','uni_id' => 'F500000001',
                                     'addr' => '新北市泰山區',
                                     'parents' => '郭小小',
                                     'tel' => '02-26660000',
                                     'dept' => '5',
                                     'graduate_at' => '1',
                                     'status_code' => '001'
-                                    )</li>
-                                <li>update():<BR>array('name' => '方玉婷(改名字)', 'tel' => '02-55558823') </li>
+                                    </li>
+                                <li>update():<BR>'name' => '方玉婷(改名字)', 'tel' => '02-55558823' </li>
                             </ul>
                         </div>
                     </td>
@@ -347,7 +351,7 @@ function del($table, ...$args)
                         <div>
                             <ul>
                                 <li>字串方式:<br>order by `id` desc</li>
-                                <li>陣列查詢多個條件:<br> array('dept' => '3', 'graduate_at' => '23')</li>
+                                <li>陣列查詢多個條件:<br> 'dept' => '3', 'graduate_at' => '23'</li>
                             </ul>
                         </div>
                     </td>

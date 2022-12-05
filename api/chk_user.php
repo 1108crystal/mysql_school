@@ -11,6 +11,7 @@ $chk=$pdo->query($sql)->fetchColumn();
 
 if($chk==1){
     $sql="select `id`,`acc`,`name`,`last_login` from `users` where `acc`='$acc' && `pw`='$pw' ";
+    echo $sql;
     $user=$pdo->query($sql)->fetch(PDO::FETCH_ASSOC);
 
     $_SESSION['login']=$user;

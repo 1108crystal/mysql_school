@@ -1,3 +1,4 @@
+
 <h3 class="text-center">調查列表</h3>
 <div class="my-4 text-center">
     <a href="admin_center.php?do=survey_add" class="btn btn-primary">新增調查</a>
@@ -22,7 +23,7 @@
         <div class="col-3 text-center">
             <a href="./api/survey_active.php?id=<?=$survey['id'];?>" class="btn btn-sm btn-secondary mx-1">啟用</a>
             <a href="admin_center.php?do=survey_edit&id=<?=$survey['id'];?>" class="btn btn-sm btn-success mx-1">編輯</a>
-            <a href="./api/survey_del.php?id=<?=$survey['id'];?>" class="btn btn-sm btn-info mx-1">刪除</a>
+            <a href="./api/survey_del.php?id=" class="btn btn-sm btn-info mx-1">刪除</a>
         </div>
     </li>
 <?php } ?>

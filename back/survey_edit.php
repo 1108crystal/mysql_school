@@ -11,7 +11,7 @@ if(isset($_GET['id'])){
 ?>
 <h3 class="text-center">編輯調查<button onclick='addOption()' class="btn btn-success btn-sm py-0" style="font-size:1.5rem">+</button></h3>
 
-<form action="./api/survey_edit.php" class="col-10 mx-auto d-flex flex-wrap justify-content-end" method="post">
+<form action="../api/survey_edit.php" class="col-10 mx-auto d-flex flex-wrap justify-content-end" method="post">
     <div class="form-group row col-12">
             <label class="col-2 text-right">主題</label>
             <input type="text" name="subject" value="<?=$subject['subject'];?>" class="form-control col-10">

@@ -164,8 +164,10 @@ function q($sql){
 }
 
 
-
-
+//header函式
+function to($location){
+    header("location:$location");
+}
 
 
 ?>

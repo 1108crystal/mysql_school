@@ -3,7 +3,7 @@ if (isset($_GET['id'])) {
     $subject = find('survey_subject', $_GET['id']);
     //dd($subject);
     $options = all('survey_options', ['subject_id' => $_GET['id']]);
-    //dd($options);
+    // dd($options);
 } else {
     header("location:admin_center.php?do=survey&error=沒有指定調查id");
 }
@@ -14,17 +14,18 @@ if (isset($_GET['id'])) {
 <ul class="list-group col-10 mx-auto">
     <?php
     foreach ($options as $idx => $option) {
+
+        $division=($subject['vote']==0)?1:$subject['vote'];
+        $width=round(($option['vote']/$division)*100,2);
         $option['vote']; 
     ?>
-        <li class="d-flex list-group-item list-group-item-light list-group-item-action">
-            <div class="col-6"> <?= $option['opt']; ?></div>
-            <div class="col-5">
-                <div class="bg-primary rounded">&nbsp;</div>
-            </div>
-            <div class="col-1">
-                <div ><?= $option['vote']; ?></div>
-            </div>
-        </li>
+    <li class="d-flex list-group-item list-group-item-light list-group-item-action">
+        <div class="col-6"><?=$option['opt'];?></div>
+        <div class="col-6 d-flex align-items-center">
+            <div class="bg-primary rounded" style="width:<?=$width;?>%">&nbsp;</div>
+            <div><?=$width;?>%</div>
+        </div>
+    </li>
     <?php
     }
     ?>

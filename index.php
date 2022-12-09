@@ -30,10 +30,13 @@ $do=$_GET['do']??'main';
 } */
 
 $file="./front/".$do.".php";
+// echo $file;
 if(file_exists($file)){
     include $file;
+    // echo $do;
 }else{
     include "./front/main.php";
+    // echo $do;
 }
 ?>
 </main>

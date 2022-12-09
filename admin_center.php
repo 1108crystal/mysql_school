@@ -27,7 +27,7 @@ if(!isset($_SESSION['login'])){
 <?php
 $do=$_GET['do']??'main';
 $file='./back/'.$do.".php";
-echo $file;
+// echo $file;
 if(file_exists($file)){
     include $file;
 }else{

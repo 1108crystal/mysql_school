@@ -1,4 +1,9 @@
 <?php
+
+// $dsn="mysql:host=localhost;charset=utf8;dbname=s1110423";
+// $pdo=new PDO($dsn,'s1110423','s1110423');
+
+
 $dsn="mysql:host=localhost;charset=utf8;dbname=school";
 $pdo=new PDO($dsn,'root','');
 

@@ -1,6 +1,9 @@
+<script>
+    alert('suervey_edit.php')
+</script>
+
 <?php
 include_once "../db/base.php";
-
 dd($_POST['subject']);
 dd($_POST['subject_id']);
 /* $subject=find('survey_subject',$_POST['subject_id']);
@@ -35,6 +38,6 @@ if(isset($_POST['optn'])){
     }
 }
 
-header("location:../admin_center.php?do=survey");
+// header("location:../admin_center.php?do=survey");
 
 ?>
